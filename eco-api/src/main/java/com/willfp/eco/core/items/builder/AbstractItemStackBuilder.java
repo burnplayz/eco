@@ -1,9 +1,12 @@
 package com.willfp.eco.core.items.builder;
 
+import com.nexomc.nexo.items.ItemUpdater;
 import com.willfp.eco.core.fast.FastItemStack;
 import com.willfp.eco.core.items.TestableItem;
 import com.willfp.eco.util.StringUtils;
+import kotlin.jvm.internal.Intrinsics;
 import org.apache.commons.lang.Validate;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -220,8 +223,15 @@ public abstract class AbstractItemStackBuilder<T extends ItemMeta, U extends Abs
     @Override
     public ItemStack build() {
         base.setItemMeta(meta);
-
-        return base;
+        ItemStack newItem = ItemUpdater.Companion.updateItem(base);
+        return newItem;
+        //if(!Intrinsics.areEqual(newItem,base)){
+        //    base.setItemMeta(newItem.getItemMeta());
+        //    Bukkit.broadcastMessage("Nexo fix");
+        //    return newItem;
+        //}
+        //Bukkit.broadcastMessage("Nexo ignore");
+        //return base;
     }
 
     /**
@@ -230,6 +240,13 @@ public abstract class AbstractItemStackBuilder<T extends ItemMeta, U extends Abs
      * @return The base ItemStack.
      */
     protected ItemStack getBase() {
+        ItemStack newItem = ItemUpdater.Companion.updateItem(base);
+
+        if(!Intrinsics.areEqual(newItem,base)){
+            base.setItemMeta(newItem.getItemMeta());
+            Bukkit.broadcastMessage("Nexo fix2");
+            return base;
+        }
         return base;
     }
 

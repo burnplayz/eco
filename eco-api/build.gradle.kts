@@ -1,3 +1,7 @@
+repositories{
+    mavenLocal()
+    maven("https://repo.nexomc.com/releases")
+}
 dependencies {
     // Adventure
     compileOnly("net.kyori:adventure-platform-bukkit:4.1.0")
@@ -7,6 +11,7 @@ dependencies {
     compileOnly("commons-lang:commons-lang:2.6")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.6.1-SNAPSHOT")
     compileOnly("com.google.code.gson:gson:2.8.8")
+    compileOnly("com.nexomc:nexo:0.6.0")
 }
 
 group = "com.willfp"
