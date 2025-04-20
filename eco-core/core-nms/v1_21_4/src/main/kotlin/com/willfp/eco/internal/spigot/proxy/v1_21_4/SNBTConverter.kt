@@ -4,12 +4,14 @@ import com.mojang.serialization.Dynamic
 import com.willfp.eco.core.items.TestableItem
 import com.willfp.eco.core.recipe.parts.EmptyTestableItem
 import com.willfp.eco.internal.spigot.proxy.SNBTConverterProxy
+import net.minecraft.core.component.DataComponents
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.NbtOps
 import net.minecraft.nbt.SnbtPrinterTagVisitor
 import net.minecraft.nbt.TagParser
 import net.minecraft.server.MinecraftServer
 import net.minecraft.util.datafix.fixes.References
+import net.minecraft.world.food.FoodProperties
 import org.bukkit.Bukkit
 import org.bukkit.craftbukkit.CraftServer
 import org.bukkit.craftbukkit.inventory.CraftItemStack
@@ -36,6 +38,11 @@ class SNBTConverter : SNBTConverterProxy {
             dataVersion ?: 3700, // 3700 is the 1.20.4 data version
             CraftMagicNumbers.INSTANCE.dataVersion
         ).value as CompoundTag
+    }
+    fun xd(item:ItemStack){
+     val nms =   CraftItemStack.asNMSCopy(item);
+        DataComponents.FOOD
+        FoodProperties.Builder()
     }
 
     override fun fromSNBT(snbt: String): ItemStack? {
