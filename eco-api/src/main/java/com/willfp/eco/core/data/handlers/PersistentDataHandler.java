@@ -3,6 +3,7 @@ package com.willfp.eco.core.data.handlers;
 import com.willfp.eco.core.data.keys.PersistentDataKey;
 import com.willfp.eco.core.registry.Registrable;
 import com.willfp.eco.core.tuples.Pair;
+import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -112,6 +113,15 @@ public abstract class PersistentDataHandler implements Registrable {
         DataTypeSerializer<T> serializer = key.getType().getSerializer(this);
         executor.submit(() -> serializer.writeAsync(uuid, key, value));
     }
+
+    public final <T> void writeSync(@NotNull final UUID uuid,
+                                @NotNull final PersistentDataKey<T> key,
+                                @NotNull final T value) {
+        DataTypeSerializer<T> serializer = key.getType().getSerializer(this);
+        serializer.writeAsync(uuid, key, value);
+    }
+
+
 
     /**
      * Serialize profile.

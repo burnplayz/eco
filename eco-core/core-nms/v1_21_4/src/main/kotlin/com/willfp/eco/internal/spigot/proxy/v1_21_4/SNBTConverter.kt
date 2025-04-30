@@ -39,11 +39,6 @@ class SNBTConverter : SNBTConverterProxy {
             CraftMagicNumbers.INSTANCE.dataVersion
         ).value as CompoundTag
     }
-    fun xd(item:ItemStack){
-     val nms =   CraftItemStack.asNMSCopy(item);
-        DataComponents.FOOD
-        FoodProperties.Builder()
-    }
 
     override fun fromSNBT(snbt: String): ItemStack? {
         val tag = parseItemSNBT(snbt) ?: return null

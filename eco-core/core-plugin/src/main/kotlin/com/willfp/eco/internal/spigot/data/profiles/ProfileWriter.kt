@@ -44,6 +44,23 @@ class ProfileWriter(
         }
     }
 
+    fun onDisable(){
+        val iterator = valuesToWrite.iterator()
+
+        while (iterator.hasNext()) {
+            val (request, value) = iterator.next()
+            iterator.remove()
+
+            val dataHandler = if (request.key.isSavedLocally) handler.localHandler else handler.defaultHandler
+
+            // Pass the value to the data handler
+            @Suppress("UNCHECKED_CAST")
+
+            dataHandler.writeSync(request.uuid, request.key as PersistentDataKey<Any>, value)
+        }
+
+    }
+
     fun startTickingAutosave() {
         plugin.scheduler.runTimer(autosaveInterval, autosaveInterval) {
             if (handler.localHandler.shouldAutosave()) {

@@ -41,4 +41,5 @@ public abstract class DataTypeSerializer<T> {
     public abstract void writeAsync(@NotNull final UUID uuid,
                                     @NotNull final PersistentDataKey<T> key,
                                     @NotNull final T value);
+
 }
