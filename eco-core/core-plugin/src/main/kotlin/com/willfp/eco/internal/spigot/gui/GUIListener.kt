@@ -32,6 +32,10 @@ class GUIListener(private val plugin: EcoPlugin) : Listener {
         menu: EcoMenu,
         depth: Int = 0
     ) {
+        if(event.click == ClickType.NUMBER_KEY){
+            event.isCancelled = true;
+            return
+        }
         // Always cancel on first depth to prevent bugs with custom slot implementations.
         if (depth == 0) {
             event.isCancelled = true
