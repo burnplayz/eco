@@ -1,6 +1,11 @@
 repositories{
     mavenLocal()
+    mavenCentral()
     maven("https://repo.nexomc.com/releases")
+    maven("https://jitpack.io")
+    maven("https://repo.nexomc.com/releases")
+    maven("https://repo.byteflux.net/repository/maven-releases/")  // Libby's official repo
+    maven("https://repo.byteflux.net/repository/maven-snapshots/")
 }
 dependencies {
     // Adventure
@@ -11,7 +16,11 @@ dependencies {
     compileOnly("commons-lang:commons-lang:2.6")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.6.1-SNAPSHOT")
     compileOnly("com.google.code.gson:gson:2.8.8")
-    compileOnly("com.nexomc:nexo:0.6.0")
+
+    compileOnly("com.nexomc:nexo:1.0.0") {
+        exclude(group = "net.byteflux", module = "libby")
+        exclude(group = "net.byteflux", module = "libby-bukkit")
+    }
 }
 
 group = "com.willfp"

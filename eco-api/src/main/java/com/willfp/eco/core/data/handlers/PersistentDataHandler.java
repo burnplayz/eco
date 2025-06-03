@@ -114,6 +114,10 @@ public abstract class PersistentDataHandler implements Registrable {
         executor.submit(() -> serializer.writeAsync(uuid, key, value));
     }
 
+    /**
+     * Write a key to persistent data.
+     * Sync to use onDisable()
+     */
     public final <T> void writeSync(@NotNull final UUID uuid,
                                 @NotNull final PersistentDataKey<T> key,
                                 @NotNull final T value) {

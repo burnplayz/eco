@@ -161,7 +161,7 @@ allprojects {
 
         compileKotlin {
             compilerOptions {
-                jvmTarget.set(JvmTarget.JVM_21)
+                jvmTarget.set(JvmTarget.JVM_17)
             }
         }
 
@@ -184,7 +184,7 @@ allprojects {
         }
 
         withType<JavaCompile>().configureEach {
-            options.release.set(21)
+            options.release.set(17)
         }
     }
 

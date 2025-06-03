@@ -244,7 +244,6 @@ public abstract class AbstractItemStackBuilder<T extends ItemMeta, U extends Abs
 
         if(!Intrinsics.areEqual(newItem,base)){
             base.setItemMeta(newItem.getItemMeta());
-            Bukkit.broadcastMessage("Nexo fix2");
             return base;
         }
         return base;
