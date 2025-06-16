@@ -104,7 +104,7 @@ class MySQLPersistentDataHandler(
 
         PersistentDataKeyType.STRING_LIST.registerSerializer(this, object : MultiValueSerializer<String>() {
             override val table = object : ListKeyTable<String>("string_list") {
-                override val value = varchar(VALUE_COLUMN_NAME, 256)
+                override val value = text(VALUE_COLUMN_NAME)
             }
         }.createTable())
     }
