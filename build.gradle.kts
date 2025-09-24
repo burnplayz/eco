@@ -36,6 +36,8 @@ dependencies {
     implementation(project(path = ":eco-core:core-nms:v1_21", configuration = "reobf"))
     implementation(project(path = ":eco-core:core-nms:v1_21_3", configuration = "reobf"))
     implementation(project(path = ":eco-core:core-nms:v1_21_4", configuration = "reobf"))
+    implementation(project(path = ":eco-core:core-nms:v1_21_5", configuration = "reobf"))
+    implementation(project(path = ":eco-core:core-nms:v1_21_7", configuration = "reobf"))
 }
 
 allprojects {
@@ -82,7 +84,7 @@ allprojects {
         maven("https://repo.md-5.net/content/repositories/snapshots/")
 
         // CombatLogX
-        maven("https://nexus.sirblobman.xyz/repository/public/")
+        maven("https://nexus.sirblobman.xyz/public/")
 
         // MythicMobs
         maven("https://mvn.lumine.io/repository/maven-public/")
